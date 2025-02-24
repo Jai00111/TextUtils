@@ -66,6 +66,7 @@ export default function TextForm(props) {
    
     
     
+    
     //text="hloo this is jai here"              worng way to change the text.
     // setText="enter text here again"          this is the right way to change the text.
     return (
@@ -79,23 +80,23 @@ export default function TextForm(props) {
         </div>
         <div className='btnFlex'>
         
-        <button className='btn btn-primary mx-2' onClick={handleClick}>Convert into Upercase</button>
-        <button className='btn btn-primary mx-2' onClick={handleClick2}>Convert into lowercase</button>
-        <button className='btn btn-primary mx-2' onClick={handleclearClick}>clear text</button>
-        <button className='btn btn-primary mx-2' onClick={handlesentenceClick}>sentence case</button>
-        <button className='btn btn-primary mx-2' onClick={handleCapitalizedClick}>Capitalized case</button>
-        <button className='btn btn-primary mx-2' onClick={handlealternateClick}>aLtErNaTiNg case</button>
-        <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
-        <button className='btn btn-primary mx-2' onClick={handleTrim}>Trim Text</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleClick}>Convert into Upercase</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleClick2}>Convert into lowercase</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleclearClick}>clear text</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handlesentenceClick}>sentence case</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleCapitalizedClick}>Capitalized case</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handlealternateClick}>aLtErNaTiNg case</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleCopy}>Copy Text</button>
+        <button className='btn btn-primary mx-1 my-1' disabled={text.length===0} onClick={handleTrim}>Trim Text</button>
         
         </div>
         </div>
         <div className='container my-3'>
             <h2> Your Text summary</h2>
-            <p> {text.split(" ").length} words and {text.split("").length}charectors are in the text your entered</p>
-            <p>{0.008 * text.split(" ").length} minutes to read</p>
+            <p> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.split("").filter((spcs)=>{return spcs!==" "}).length}charectors are in the text your entered</p>
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes to read</p>
             <h2>Preview</h2>
-            <p>{text===""?"enter something into the above textarea to preview": text}</p>
+            <p>{text===""?"Nothing to preview": text}</p>
         </div>
         </>
   )
